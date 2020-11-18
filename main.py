@@ -38,34 +38,13 @@ def index():
         session['x_var'] = form.x_var.data
         session['y_var'] = form.y_var.data
         session['cluster_num'] = form.cluster_num.data
-        #graph = apply_kmeans(int(session['x_var']), int(session['y_var']), int(session['cluster_num']))
+        graph = apply_kmeans(int(session['x_var']), int(session['y_var']), int(session['cluster_num']))
 
         #graphJSON = apply_kmeans_(int(session['x_var']), int(session['y_var']), int(session['cluster_num']))
 
-        count = 500
-        xScale = np.linspace(0, 100, count)
-        y0_scale = np.random.randn(count)
-        y1_scale = np.random.randn(count)
-        y2_scale = np.random.randn(count)
+        return render_template('index.html', form=form, graph=graph)
 
-        # Create traces
-        trace0 = go.Scatter(
-            x=xScale,
-            y=y0_scale
-        )
-        trace1 = go.Scatter(
-            x=xScale,
-            y=y1_scale
-        )
-        trace2 = go.Scatter(
-            x=xScale,
-            y=y2_scale
-        )
-        data = [trace0, trace1, trace2]
-        graphJSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
-        return render_template('index.html', form=form, graph=graph,graphJSON=graphJSON)
-
-    return render_template('index.html', form=form, graph=None,graphJSON=None)
+    return render_template('index.html', form=form, graph=None)
 
 
 if __name__ == '__main__':
