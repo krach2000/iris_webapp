@@ -40,32 +40,29 @@ def index():
         session['cluster_num'] = form.cluster_num.data
         #graph = apply_kmeans(int(session['x_var']), int(session['y_var']), int(session['cluster_num']))
 
-        #graphJSON = apply_kmeans_(int(session['x_var']), int(session['y_var']), int(session['cluster_num']))
+        graphJSON = apply_kmeans_(int(session['x_var']), int(session['y_var']), int(session['cluster_num']))
 
-        count = 500
-        xScale = np.linspace(0, 100, count)
-        y0_scale = np.random.randn(count)
-        y1_scale = np.random.randn(count)
-        y2_scale = np.random.randn(count)
-
-        # Create traces
-        trace0 = go.Scatter(
-            x=xScale,
-            y=y0_scale
-        )
-        trace1 = go.Scatter(
-            x=xScale,
-            y=y1_scale
-        )
-        trace2 = go.Scatter(
-            x=xScale,
-            y=y2_scale
-        )
-        data = [trace0, trace1, trace2]
-        graphJSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
         return render_template('index.html', form=form, graph=graph,graphJSON=graphJSON)
 
     return render_template('index.html', form=form, graph=None,graphJSON=None)
+
+
+@app.route('/test')
+def line():
+    count = 500
+    xScale = np.linspace(0, 100, count)
+    yScale = np.random.randn(count)
+
+    # Create a trace
+    trace = go.Scatter(
+        x=xScale,
+        y=yScale
+    )
+
+    data = [trace]
+    graphJSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
+    return render_template('results.html',
+                           graphJSON=graphJSON)
 
 
 if __name__ == '__main__':
