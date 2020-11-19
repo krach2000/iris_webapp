@@ -47,23 +47,6 @@ def index():
     return render_template('index.html', form=form, graph=None,graphJSON=None)
 
 
-@app.route('/test')
-def line():
-    count = 500
-    xScale = np.linspace(0, 100, count)
-    yScale = np.random.randn(count)
-
-    # Create a trace
-    trace = go.Scatter(
-        x=xScale,
-        y=yScale
-    )
-
-    data = [trace]
-    graphJSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
-    return render_template('results.html',
-                           graphJSON=graphJSON)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
