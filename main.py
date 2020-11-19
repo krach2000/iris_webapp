@@ -40,11 +40,13 @@ def index():
         session['cluster_num'] = form.cluster_num.data
         graph = apply_kmeans(int(session['x_var']), int(session['y_var']), int(session['cluster_num']))
 
-        #graphJSON = apply_kmeans_(int(session['x_var']), int(session['y_var']), int(session['cluster_num']))
+        graphJSON = apply_kmeans_(int(session['x_var']), int(session['y_var']), int(session['cluster_num']))
 
-        return render_template('index.html', form=form, graph=graph)
+        return render_template('index.html', form=form, graph=graph,graphJSON=graphJSON)
 
-    return render_template('index.html', form=form, graph=None)
+    return render_template('index.html', form=form, graph=None,graphJSON=None)
+
+
 
 
 if __name__ == '__main__':
