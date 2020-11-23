@@ -30,21 +30,21 @@ class inputForm(FlaskForm):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    form = inputForm()
+    #form = inputForm()
     graphJSON= None
     graph = None
 
-    if form.validate_on_submit():
-        session['x_var'] = form.x_var.data
-        session['y_var'] = form.y_var.data
-        session['cluster_num'] = form.cluster_num.data
+    if request.method =="POST":
+        x_var = request.form['x_var']
+        y_var = request.form['y_var']
+        cluster_num = request.form['cluster_num']
         #graph = apply_kmeans(int(session['x_var']), int(session['y_var']), int(session['cluster_num']))
 
-        graphJSON = apply_kmeans_(int(session['x_var']), int(session['y_var']), int(session['cluster_num']))
+        graphJSON = apply_kmeans_(int(x_var), int(y_var), int(cluster_num))
 
-        return render_template('index.html', form=form, graph=graph,graphJSON=graphJSON)
+        return render_template('index.html', graph=graph,graphJSON=graphJSON)
 
-    return render_template('index.html', form=form, graph=None,graphJSON=None)
+    return render_template('index.html', graph=None,graphJSON=None)
 
 
 

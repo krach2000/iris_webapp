@@ -36,18 +36,30 @@
     </nav>
 </div>
 
+
 <!--Form-->
 <div class="container">
     <h1>Variable Input</h1>
-    <form method="POST">
-        {{ form.hidden_tag() }}
-        {{ form.x_var.label}}{{form.x_var}}
+    <form method="POST" action="">
+        <label for="x_var">Please choose X-variable:</label>
+        <select id="x_var" name="x_var">
+            <option value="0">Sepal Length</option>
+            <option value="1">Sepal Width</option>
+            <option value="2">Petal Length</option>
+            <option value="3">Petal Width</option>
+        </select>
         <br>
-        {{ form.y_var.label}}{{form.y_var}}
+        <label for="y_var">Please choose Y-variable:</label>
+        <select id="y_var" name="y_var">
+            <option value="0">Sepal Length</option>
+            <option value="1">Sepal Width</option>
+            <option value="2">Petal Length</option>
+            <option value="3">Petal Width</option>
+        </select>
         <br>
-        {{form.cluster_num.label}}{{form.cluster_num}}
+        <input type="range" min="1" max="5" name = "cluster_num"/>
         <br>
-        {{form.submit}}
+        <input type="submit" value="submit"/>
     </form>
 </div>
 
@@ -71,7 +83,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
->>>>>>> dev
 <script crossorigin="anonymous"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
