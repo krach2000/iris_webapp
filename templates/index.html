@@ -97,28 +97,30 @@
   var x_var = document.getElementById('x_var');
   var y_var = document.getElementById('y_var');
 
-    cluster_num.onchange = function() {
+    form.onchange = function() {
         $.post({
                 url: '/cluster_num',
                 contentType: "application/json",
-                data: JSON.stringify({"cluster_num": cluster_num.value})
+                data: JSON.stringify({"cluster_num": cluster_num.value, "x_var": x_var.value, "y_var": y_var.value})
         }).done(function(data) {
                 var num = 0;
                 console.log(data)
                 var plt_data = [];
                 var i;
                 for (i=0; i < cluster_num.value; i++) {
-                    console.log("hello");
-                    console.log(i);
                     plt_data.push({x: data["XT" + i.toString()], y: data["YT" + i.toString()], mode: 'markers', type:'scatter', marker:{size:12}});
 
                 }
 
                 plt_data.push({x: data["XCC"], y: data["YCC"], mode: 'markers', type:'scatter', marker:{size:13, symbol: 'x'}});
 
-                Plotly.newPlot('chart',plt_data);
+                x_label = x_var.options[x_var.selectedIndex].text;
+                y_label = y_var.options[y_var.selectedIndex].text;
+                var layout = {xaxis: {title: {text: x_label}},yaxis: {title: {text: y_label}},showlegend: false};
+                Plotly.newPlot('chart',plt_data, layout);
         });
     }
+
 
 
 </script>

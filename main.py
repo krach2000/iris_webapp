@@ -30,9 +30,8 @@ def index():
 
 @app.route('/cluster_num', methods=['GET', 'POST'])
 def cluster_num():
-    print(request.json["cluster_num"])
-    x_var = 1
-    y_var = 2
+    x_var = int(request.json["x_var"])
+    y_var = int(request.json["y_var"])
     cluster_num = int(request.json["cluster_num"])
     data = apply_kmeans_(x_var, y_var, cluster_num)
     return jsonify(data)
