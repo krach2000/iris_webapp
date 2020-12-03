@@ -1,0 +1,64 @@
+.navbar {
+    width: 100%;
+}
+
+.Description{
+    padding:30px;
+    margin:10px;
+    position: relative;
+    left:100px;
+}
+
+.info img{
+    width: 50%;
+    height:50%;
+}
+
+.form_option{
+    padding: 5px;
+}
+
+.card {
+    width: 400px;
+    left: 40px;
+    padding: 15px 5px;
+    margin: auto;
+    display: block;
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+}
+
+#rangeValue{
+    position: absolute;
+    left: 300px;
+    bottom: 50px;
+    padding: 2px;
+    width:50px;
+    box-sizing: border-box;
+    background : grey;
+    text-align: center;
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+}
+
+#rangeValue:before{
+    content:'';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    left: -5px;
+    width: 10px;
+    height:10px;
+    background: grey;
+}
+
+.row{
+    margin-bottom:10px;
+}
+
+.custom-range{
+
+    width: 250px;
+    height: 2px;
+    -webkit-appearance: none;
+    outline: none;
+    border-radius: 2px;
+}
