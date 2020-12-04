@@ -6,8 +6,6 @@
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 
     <!-- Bootstrap CSS -->
-   <!-- <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="{{url_for('static',filename='css/style.css')}}" rel="stylesheet">
     <title>Iris K-means</title>
@@ -19,7 +17,8 @@
 <div class="container-fluid">
     <div class="row">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="" style="position:relative;left:10px;"><img src="{{url_for('static', filename='images/icon.png')}}" style="height:40px;width:40px;"></a>
+            <a class="navbar-brand" href="" style="position:relative;left:10px;"><img
+                    src="{{url_for('static', filename='images/icon.png')}}" style="height:40px;width:40px;"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -35,93 +34,128 @@
     </div>
 </div>
 
+<div class="content container-fluid">
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-6 d-flex justify-content-start">
-            <div class="Description">
-                <h1 class="display-4"><strong>Iris K-means Clustering</strong></h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 d-flex justify-content-start">
+                <div class="Heading">
+                    <h1 class="display-4"><strong>Iris K-means Clustering</strong></h1>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
-<!--Form-->
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-4">
+    <!--Description-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-10">
+                <div class="Description">
+                    <h3 class="h3">A little bit about this Iris use case and k-means:</h3>
+                    <p class="display-5">The <a href="https://archive.ics.uci.edu/ml/datasets/iris">Iris dataset</a>
+                        consists of 150 data points about 3 species of iris flowers -
+                        Setosa, Versicolour and Virginica. For each flower the measurements of sepal length, sepal
+                        width,
+                        petal length and petal width are recorded in centimeters. We will be performing K-means on this
+                        dataset. K-means is a clustering algorithm that is used to find groups that are similar in some
+                        way
+                        which is not obvious to the human eye. It can be used to identify or confirm the existence of
+                        groups
+                        within complex datasets.</p>
+                    <img src="{{url_for('static',filename='images/iris.png')}}">
+                    <h3 class="h3">Why is this webapp so impactful?</h3>
+                    <p class="display-5">Whenever a user changes an input (i.e. either the sepal / petal type or the
+                        number-of-clusters slider), the k-means Python function is updated and the visuals (i.e. the
+                        scatter
+                        plot showing the clusters and their centroids) changes automatically. This demonstrates that we
+                        can
+                        develop seemingly simple interactive webapps that are powered by advanced analytics under the
+                        bonnet. This is very similar to the Shiny product developed by RStudio (see <a
+                                href="https://shiny.rstudio.com/gallery/kmeans-example.html">Shiny - Kmeans example</a>
+                        a
+                        for their equivalent based on R). Go up a level to the main gallery
+                        (<a href="https://shiny.rstudio.com/gallery/">https://shiny.rstudio.com/gallery/<a>) to see many
+                            other examples of what other people have done using
+                            this approach. Our webapps will be deployed into PwC’s Azure subscription and can link
+                            seamlessly to
+                            our internal data sources, like the EDP, plus we use Python (much better). There is
+                            obviously
+                            commercial potential in this, i.e. as a firm we could deliver very rich insights to our
+                            clients
+                            through webapps and DI can provide the appropriate support.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-text">
-                        <div class="form-group">
-                            <form action="/" enctype="multipart/form-data" id="form" method="post">
-                                <div class="form_option">
-                                    <label for="x_var">Please choose X-variable:</label>
+    <!--Form-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4">
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-text">
+                            <div class="form-group">
+                                <form action="/" enctype="multipart/form-data" id="form" method="post">
+                                    <div class="form_option">
+                                        <label for="x_var">Please choose X-variable:</label>
+                                        <br>
+                                        <select id="x_var" name="x_var" class="custom-select">
+                                            <option value="0">Sepal Length</option>
+                                            <option value="1">Sepal Width</option>
+                                            <option value="2">Petal Length</option>
+                                            <option value="3">Petal Width</option>
+                                        </select>
+                                    </div>
                                     <br>
-                                    <select id="x_var" name="x_var" class="custom-select">
-                                        <option value="0">Sepal Length</option>
-                                        <option value="1">Sepal Width</option>
-                                        <option value="2">Petal Length</option>
-                                        <option value="3">Petal Width</option>
-                                    </select>
-                                </div>
-                                <br>
-                                <div class="form_option">
-                                    <label for="y_var">Please choose Y-variable:</label>
+                                    <div class="form_option">
+                                        <label for="y_var">Please choose Y-variable:</label>
+                                        <br>
+                                        <select id="y_var" name="y_var" class="custom-select">
+                                            <option value="1">Sepal Width</option>
+                                            <option value="0">Sepal Length</option>
+                                            <option value="2">Petal Length</option>
+                                            <option value="3">Petal Width</option>
+                                        </select>
+                                    </div>
                                     <br>
-                                    <select id="y_var" name="y_var" class="custom-select">
-                                        <option value="1">Sepal Width</option>
-                                        <option value="0">Sepal Length</option>
-                                        <option value="2">Petal Length</option>
-                                        <option value="3">Petal Width</option>
-                                    </select>
-                                </div>
-                                <br>
-                                <div class="form_option">
-                                    <label for="cluster_num"> Please choose number of clusters:</label>
-                                    <br>
-                                    <input id="cluster_num" max="5" min="1" name="cluster_num" step="1" type="range" class="custom-range"
-                                           value="3" onmousemove="rangeSlider(this.value)"
-                                           onChange="rangeSlider(this.value)">
-                                    <span id="rangeValue">3</span>
-                                </div>
-                            </form>
+                                    <div class="form_option">
+                                        <label for="cluster_num"> Please choose number of clusters:</label>
+                                        <br>
+                                        <input id="cluster_num" max="5" min="1" name="cluster_num" step="1" type="range"
+                                               class="custom-range"
+                                               value="3" onmousemove="rangeSlider(this.value)"
+                                               onChange="rangeSlider(this.value)">
+                                        <span id="rangeValue">3</span>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 
-        <div class="col-lg-7">
-            <div class="info">
-                <p class="display-5">Whenever a user changes an input (i.e. either the sepal / petal type or the
-                    number-of-clusters slider), the k-means Python function is updated and the visuals (i.e. the scatter
-                    plot showing the clusters and their centroids) changes automatically. This demonstrates that we can
-                    develop seemingly simple interactive webapps that are powered by advanced analytics under the
-                    bonnet.
-                    This is very similar to the Shiny product developed by RStudio (see Shiny - Kmeans example for their
-                    equivalent based on R). This is very similar to the Shiny product developed by RStudio (see Shiny - Kmeans example for their equivalent based on R). Go up a level to the main gallery (https://shiny.rstudio.com/gallery/) to see many other examples of what other people have done using this approach. Our webapps will be deployed into PwC’s Azure subscription and can link
-                    seamlessly
-                    to our internal data sources, like the EDP, plus we use Python (much better). Webapps allow us to create simple and elegant solutions that can be scaled into fully fledged applications. Compared to existing tools, webapps enable the user to have increased control over the functionality and interactivity of the end-product. We could also help our
-                    colleagues in the different lines of service to develop webapps for our clients, the options are
-                    almost
-                    endless.</p>
-                <img src="{{url_for('static',filename='images/iris.png')}}">
+            <div class="col-6">
+                <div class="chart" id="chart" style="height:600px;">
+                </div>
             </div>
+
         </div>
     </div>
-</div>
 
-<!--plot image-->
-<div class="container">
-    <div class="graph">
-            <div class="chart" id="chart" style="height:600px;">
-            </div>
+    <!--plot image-->
+    <div class="container">
+        <div class="graph">
+
+
+        </div>
     </div>
+
 </div>
 
 <!-- Optional JavaScript -->
@@ -143,6 +177,11 @@
                                 function rangeSlider(value) {
                                     document.getElementById("rangeValue").innerHTML = value;
                                 }
+
+
+
+
+
 </script>
 <script>
   var cluster_num = document.getElementById('cluster_num');
@@ -170,6 +209,11 @@
                 Plotly.newPlot('chart',plt_data, layout);
         });
     }
+
+
+
+
+
 
 
 

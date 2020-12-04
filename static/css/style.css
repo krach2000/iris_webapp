@@ -1,17 +1,35 @@
+.content{
+    /*position: relative;*/
+    padding: 40px 70px;
+
+}
 .navbar {
     width: 100%;
 }
 
-.Description{
-    padding:30px;
-    margin:10px;
-    position: relative;
-    left:100px;
+.Heading h1{
+    color: #000000;
 }
 
-.info img{
-    width: 50%;
-    height:50%;
+.Description{
+    margin:20px 0px;
+
+}
+
+.Description h3{
+    /*color: #2b2926;*/
+    color: #464646;
+}
+
+.Description a {
+    color: #d04a02;
+
+}
+.Description img{
+    margin: 10px 0px;
+    padding-bottom:20px;
+    width: 65%;
+    height:65%;
 }
 
 .form_option{
@@ -19,11 +37,11 @@
 }
 
 .card {
+
     width: 400px;
-    left: 40px;
+    position: relative;
+    top: 15%;
     padding: 15px 5px;
-    margin: auto;
-    display: block;
     box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -33,9 +51,11 @@
     bottom: 50px;
     padding: 2px;
     width:50px;
+    border-radius: 5px;
     box-sizing: border-box;
-    background : grey;
+    background : #464646;
     text-align: center;
+    color: white;
     box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -47,7 +67,7 @@
     left: -5px;
     width: 10px;
     height:10px;
-    background: grey;
+    background: #464646;
 }
 
 .row{
@@ -55,10 +75,25 @@
 }
 
 .custom-range{
-
     width: 250px;
     height: 2px;
     -webkit-appearance: none;
     outline: none;
     border-radius: 2px;
 }
+
+.custom-range::-webkit-slider-thumb{
+    background: #464646;
+
+}
+
+.custom-range:hover {
+   color: #d04a02;
+}
+
+
+
+
+
+
+
